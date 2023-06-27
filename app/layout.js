@@ -13,16 +13,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   const router = useRouter();
-  const login = JSON.parse(localStorage.getItem('myGenieAuth'))
+  // const login = JSON.parse(localStorage.getItem('myGenieAuth'))
   useEffect(()=>{
-    if(login){
-      console.log("login there",login);
-      // router.push('/admin/dashboard')
-    }
-    else{
-      console.log("not there",login);
-      router.push('/login')
-    }
+    // if(login){
+    //   console.log("login there",login);
+    //   // router.push('/admin/dashboard')
+    // }
+    // else{
+    //   console.log("not there",login);
+    //   router.push('/login')
+    // }
   },[])
 
   return (

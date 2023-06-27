@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
+
 export default function FormComponent() {
   const [loginData, setLoginData] = useState({
     email: "",
@@ -10,8 +11,17 @@ export default function FormComponent() {
   });
   const [errors, setErrors] = useState({});
   const router = useRouter();
+  var logindata
+  if (typeof window !== 'undefined') {
+    console.log('You are on the browser')
+    // 👉️ can use localStorage here
+    logindata = JSON.parse(localStorage.getItem("myGenieAuth"));
+  
+  } else {
+    console.log('You are on the server')
+    // 👉️ can't use localStorage
+  }
 
-  const logindata = JSON.parse(localStorage.getItem("myGenieAuth"));
   useEffect(() => {
     if (logindata) {
       router.push("/admin/dashboard");
