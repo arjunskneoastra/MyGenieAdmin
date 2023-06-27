@@ -9,7 +9,14 @@ export default function Navbar() {
   const router = useRouter();
 
   const handleLogout = () => {
+  if (typeof window !== 'undefined') {
+    console.log('You are on the browser')
+    // 👉️ can use localStorage here
     localStorage.removeItem("myGenieAuth");
+  } else {
+    console.log('You are on the server')
+    // 👉️ can't use localStorage
+  }
     router.push("/login");
   }
 

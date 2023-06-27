@@ -5,17 +5,15 @@ import { useEffect } from "react";
 
 export default function Home() {
   const router = useRouter();
-  var login 
+  var login
   if (typeof window !== 'undefined') {
     console.log('You are on the browser')
     // 👉️ can use localStorage here
     login = JSON.parse(localStorage.getItem('myGenieAuth'))
   
-  } else {
-    console.log('You are on the server')
-    // 👉️ can't use localStorage
   }
-  
+
+
   useEffect(()=>{
     if(login){
       console.log("login there",login);

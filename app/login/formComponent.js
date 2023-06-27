@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-
 export default function FormComponent() {
   const [loginData, setLoginData] = useState({
     email: "",
@@ -11,6 +10,7 @@ export default function FormComponent() {
   });
   const [errors, setErrors] = useState({});
   const router = useRouter();
+
   var logindata
   if (typeof window !== 'undefined') {
     console.log('You are on the browser')
@@ -21,7 +21,6 @@ export default function FormComponent() {
     console.log('You are on the server')
     // 👉️ can't use localStorage
   }
-
   useEffect(() => {
     if (logindata) {
       router.push("/admin/dashboard");

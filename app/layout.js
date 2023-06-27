@@ -6,23 +6,30 @@ import { useRouter } from "next/navigation";
 
 const poppins = Poppins({ subsets: ['latin'],weight:['200','400','600','900'] })
 
-export const metadata = {
-  title: 'MyGenie',
-  description: 'MyGenie admin panel',
-}
+
 
 export default function RootLayout({ children }) {
   const router = useRouter();
-  // const login = JSON.parse(localStorage.getItem('myGenieAuth'))
+
+  var login;
+  if (typeof window !== 'undefined') {
+    console.log('You are on the browser')
+    // 👉️ can use localStorage here
+    login = JSON.parse(localStorage.getItem('myGenieAuth'))
+  
+  } else {
+    console.log('You are on the server')
+    // 👉️ can't use localStorage
+  }
   useEffect(()=>{
-    // if(login){
-    //   console.log("login there",login);
-    //   // router.push('/admin/dashboard')
-    // }
-    // else{
-    //   console.log("not there",login);
-    //   router.push('/login')
-    // }
+    if(login){
+      console.log("login there",login);
+      // router.push('/admin/dashboard')
+    }
+    else{
+      console.log("not there",login);
+      router.push('/login')
+    }
   },[])
 
   return (

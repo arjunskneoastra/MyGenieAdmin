@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { useSearchParams } from "next/navigation";
 import ProfileTabs from "../../Components/ProfileTabs";
 import Profile from "./page";
